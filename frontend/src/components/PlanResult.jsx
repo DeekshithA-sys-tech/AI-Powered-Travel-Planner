@@ -112,13 +112,6 @@ export default function PlanResult({ query, threadId, data }) {
         >
           {copied ? "✅ Copied!" : "📋 Copy Plan"}
         </button>
-
-        {threadId && (
-          <div className="flex-1 rounded-[10px] border border-line bg-panel px-4 py-2.5 text-sm text-[#8ab8d8]">
-            📁 Saved in PostgreSQL →{" "}
-            <code className="rounded bg-[#0a1520] px-1.5 py-0.5 text-[#7ab8f5]">{threadId}</code>
-          </div>
-        )}
       </div>
     </section>
   );
