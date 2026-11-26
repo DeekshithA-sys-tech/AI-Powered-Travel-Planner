@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --color-brand: #3a7bd5;
+  --color-brand-dark: #1a6bbf;
+  --color-brand-light: #4ea8f0;
+  --color-brand-soft: #7ab8f5;
+  --color-ink: #e0edf8;
+  --color-muted: #7aa8cc;
+  --color-line: #1e2e44;
+  --color-surface: #080d14;
+  --color-panel: #0e1623;
+  --color-sidebar: #090e18;
+}
+
+html,
+body {
+  background-color: #080d14;
+  color: #e0edf8;
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+}
+
+.final-card {
+  background: linear-gradient(160deg, #0c1a2e 0%, #0a1520 100%);
+  border: 1px solid #1e3a5c;
+  border-left: 4px solid #3a7bd5;
+  border-radius: 14px;
+}
+
+.generate-btn {
+  background: linear-gradient(135deg, #1a6bbf 0%, #0d4a8a 50%, #0a3d75 100%);
+  box-shadow: 0 0 24px rgba(26, 107, 191, 0.35), 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.generate-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2278d4 0%, #1057a0 50%, #0d4a8a 100%);
+  box-shadow: 0 0 40px rgba(26, 107, 191, 0.6), 0 6px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0px);
+}
