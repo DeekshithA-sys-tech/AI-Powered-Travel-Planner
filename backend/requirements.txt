@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+langgraph
+langgraph-checkpoint-postgres
+langchain-core
+langchain-groq
+psycopg[binary,pool]
+# plus whatever tools/tavily_tool.py and tools/flight_tool.py need, e.g.:
+# tavily-python
+tavily-python 
+requests 
+langchain-tavily
