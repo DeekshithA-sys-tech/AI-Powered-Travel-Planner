@@ -6,6 +6,16 @@ The planner orchestrates four specialized agents sequentially and streams live s
 
 ---
 
+## Live Deployment (Railway)
+
+- **Live App (Frontend):** https://frontend-production-d5e55587.up.railway.app
+- **Backend API:** https://backend-production-b7b1ed21.up.railway.app
+- **API Docs (Swagger):** https://backend-production-b7b1ed21.up.railway.app/docs
+- **Health Check:** https://backend-production-b7b1ed21.up.railway.app/api/health
+- **GitHub Repository:** https://github.com/DeekshithA-sys-tech/AI-Powered-Travel-Planner
+
+---
+
 ## Architecture
 
 ```
@@ -127,10 +137,12 @@ Open `http://localhost:5173` in your browser.
 
 ## Hosting / Deployment
 
-1. **PostgreSQL**: Provision a managed PostgreSQL database (e.g., Neon, Supabase, or Render Postgres) and use its connection string as `DATABASE_URL`.
-2. **Backend (FastAPI)**: Deploy `backend/` to a Python host (Render, Railway, or Fly.io) with start command:
+This project is deployed as a three-service stack on **Railway** (`ai-powered-travel-planner`):
+
+1. **PostgreSQL**: Managed Railway Postgres (`Postgres` template) wired to the backend via `${{Postgres.DATABASE_URL}}`.
+2. **Backend (FastAPI)**: Root directory `/backend`, built with Railpack (Python 3.12), started with:
    ```bash
    uvicorn main:app --host 0.0.0.0 --port $PORT
    ```
-   Set `DATABASE_URL`, `GROQ_API_KEY`, `GROQ_MODEL`, `TAVILY_API_KEY`, `AVIATIONSTACK_API_KEY`, and `ALLOWED_ORIGINS` (your deployed frontend URL).
-3. **Frontend (React/Vite)**: Deploy `frontend/` to Vercel, Netlify, or Cloudflare Pages (build command: `npm run build`, output directory: `dist`) with `VITE_API_URL` pointing to your deployed backend URL.
+   Environment variables: `DATABASE_URL`, `GROQ_API_KEY`, `GROQ_MODEL`, `TAVILY_API_KEY`, `AVIATIONSTACK_API_KEY`, and `ALLOWED_ORIGINS`.
+3. **Frontend (React/Vite)**: Root directory `/frontend`, built with `npm run build` (`dist/`), served with Railpack static/SPA hosting (`RAILPACK_STATIC_FILE_ROOT=dist`, `RAILPACK_SPA_OUTPUT_DIR=dist`) and `VITE_API_URL` pointing to the deployed backend URL.
